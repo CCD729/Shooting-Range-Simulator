@@ -1,2 +1,2 @@
 # Shooting-Range-Simulator
-CM121 Final prorype 1
+CM121 Final Prototype 1
