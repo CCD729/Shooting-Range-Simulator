@@ -11,7 +11,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        mouseCurrent.x = 90;
+        mouseCurrent.x = 0;
         character = this.transform.parent.gameObject;
     }
 
