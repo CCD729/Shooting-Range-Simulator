@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShootingScript : MonoBehaviour
 {
+    //Scene management
+    public GameObject sceneManmager;
+    private bool levelEnded = false;
+    private bool levelPaused = false;
     //Bullets per second
     public float firingRate = 10f;
     //Auto? Semi-auto?
@@ -13,6 +18,15 @@ public class ShootingScript : MonoBehaviour
     //References
     public GameObject bullet;
     public Transform firePoint, detectPoint;
+    public Text scoreText, ammoText, timeText;
+    private int count;
+
+    [SerializeField]
+    private float timeLimit = 30.00f;
+    private float timeLeft = 30.00f;
+
+    private Ray ray;
+    private RaycastHit raycastHit;
 
     //Current bullets left in mag
     private int currentMag = 30;
@@ -32,79 +46,126 @@ public class ShootingScript : MonoBehaviour
     //able to shoot status
     private bool fRatePassed = true;
 
+    //IMPORTANT: UPDATING PRESSINFO
+    private bool EscPressed = false;
 
-    private Ray ray;
-    private RaycastHit raycastHit;
-    
+
     void Start()
     {
         //Set firing interval according to input firing rate
         fRateInt = 1f / firingRate;
+        count = 0;
+        timeLeft = timeLimit;
+        scoreText.text = "Score: " + count.ToString();
+        timeText.text = "Time: " + timeLeft.ToString();
+        Time.timeScale = 1;
     }
 
-    
-
+    void Update()
+    {
+        if(count == 32)
+        {
+            this.Perfect();
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            EscPressed = true;
+        }
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            EscPressed = false;
+        }
+        if (EscPressed && levelPaused == false)
+        {
+            EscPressed = false;
+            this.Pause();
+        }
+        else if (EscPressed && levelPaused == true)
+        {
+            EscPressed = false;
+            this.Resume();
+        }
+    }
     void FixedUpdate()
     {
-        bulletEnough = currentMag > 0;
-        // Get a ray from the camera pointing forwards
-        ray = new Ray(this.transform.position, this.transform.forward);
-        if (Input.GetMouseButton(0))
+        if (!levelPaused && !levelEnded)
         {
-            //Do nothing if reloading (TODO: SHOW RELOAD UI)
             if (!reloading)
+                ammoText.text = currentMag.ToString() + "/30";
+            bulletEnough = currentMag > 0;
+            // Get a ray from the camera pointing forwards
+            ray = new Ray(this.transform.position, this.transform.forward);
+            if (Input.GetMouseButton(0))
             {
-                //Start shooting if mag has bullets
-                if (bulletEnough)
+                //Do nothing if reloading (TODO: SHOW RELOAD UI)
+                if (!reloading)
                 {
-                    if(fRatePassed)
-                        Shoot();
-                }  
+                    //Start shooting if mag has bullets
+                    if (bulletEnough)
+                    {
+                        if (fRatePassed)
+                            Shoot();
+                    }
+                    else
+                    {
+                        reloading = true;
+                        ammoText.text = "Reloading";
+                        Debug.Log("Reloading...");
+                    }
+                }
+            }
+            //Manual reload
+            if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading)
+            {
+                reloading = true;
+                ammoText.text = "Reloading";
+                Debug.Log("Reloading...");
+            }
+
+            //Reload logic
+            if (reloading)
+            {
+                if (reloadingTime < reloadTime)
+                {
+                    reloadingTime += Time.fixedDeltaTime;
+                }
                 else
                 {
-                    reloading = true;
-                    Debug.Log("Reloading...");
+                    reloadingTime = 0f;
+                    currentMag = magSize;
+                    reloading = false;
+                    ammoText.text = currentMag.ToString() + "/30";
+                    Debug.Log("Reloaded");
                 }
-
-
             }
-        }
-        //Manual reload
-        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading)
-        {
-            reloading = true;
-            Debug.Log("Reloading...");
-        }
-
-        //Reload logic
-        if (reloading)
-        {
-            if (reloadingTime < reloadTime)
+            //Firing rate recover logic
+            if (!fRatePassed)
             {
-                reloadingTime += Time.fixedDeltaTime;
+                if (fGapCount < fRateInt)
+                {
+                    fGapCount += Time.fixedDeltaTime;
+                }
+                else
+                {
+                    fGapCount = 0f;
+                    fRatePassed = true;
+                }
             }
-            else
+            if (timeLeft > 0f)
             {
-                reloadingTime = 0f;
-                currentMag = magSize;
-                reloading = false;
-                Debug.Log("Reloaded");
-            }
-        }
-        //Firing rate recover logic
-        if (!fRatePassed)
-        {
-            if (fGapCount < fRateInt)
-            {
-                fGapCount += Time.fixedDeltaTime;
+                timeLeft -= Time.fixedDeltaTime;
+                timeText.text = "Time: " + timeLeft.ToString("F2");
             }
             else
             {
-                fGapCount = 0f;
-                fRatePassed = true;
+                timeLeft = 0.00f;
+                timeText.text = "Time: 0.00";
+                this.End();
             }
         }
     }
+
+
     void Shoot()
     {
         fRatePassed = false;
@@ -137,9 +198,37 @@ public class ShootingScript : MonoBehaviour
             var target = raycastHit.collider.gameObject;
             if (target.CompareTag("Target"))
             {
-                Debug.Log("TargetHit");
+                if (!target.GetComponent<TargetBehavior>().hit)
+                {
+                    count++;
+                    scoreText.text = "Score: " + count.ToString();
+                }
                 target.GetComponent<TargetBehavior>().Hit(raycastHit.point, this.transform.forward);
             }
         }
+    }
+    public void Pause()
+    {
+        Time.timeScale = 0;
+        sceneManmager.GetComponent<LevelSceneManager>().Pause();
+        levelPaused = true;
+    }
+    public void Resume()
+    {
+        sceneManmager.GetComponent<LevelSceneManager>().Resume();
+        levelPaused = false;
+        Time.timeScale = 1;
+    }
+    public void End()
+    {
+        Time.timeScale = 0;
+        levelEnded = true;
+        sceneManmager.GetComponent<LevelSceneManager>().End(count);
+    }
+    public void Perfect()
+    {
+        Time.timeScale = 0;
+        levelEnded = true;
+        sceneManmager.GetComponent<LevelSceneManager>().Perfect();
     }
 }

@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 2.5f;
+            //public float speed = 2.5f;
     //public float jumpSpeed = 2.5f;
     //public float gravity = 10.0F;
-    private Vector3 moveDirection = Vector3.zero;
-    CharacterController controller;
+            //private Vector3 moveDirection = Vector3.zero;
+            //CharacterController controller;
     //Rigidbody rb;
     //private float speedVertical = 0.0f;
     //private int count; //(Could put score in a separate script)
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        controller = GetComponent<CharacterController>();
+                //controller = GetComponent<CharacterController>();
         //rb = GetComponent<Rigidbody>();
     }
 
@@ -25,7 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         // moveDirection = transform.TransformDirection(moveDirection);
 
-        moveDirection = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
+        //moveDirection = transform.TransformDirection(new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")));
         /*if (controller.isGrounded)
         {
             speedVertical = 0;
@@ -36,25 +34,21 @@ public class PlayerController : MonoBehaviour
         }*/
         //speedVertical -= gravity * Time.deltaTime;
         //moveDirection.y = speedVertical;
-        controller.Move(moveDirection * Time.fixedDeltaTime * speed);
-        if (Input.GetKeyDown("escape"))
-        {
-            if (Cursor.lockState == CursorLockMode.Locked)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-            else if (Cursor.lockState == CursorLockMode.None)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
+        //controller.Move(moveDirection * Time.fixedDeltaTime * speed);
+        //if (Input.GetKeyDown("escape"))
+        //{
+        //    if (Cursor.lockState == CursorLockMode.Locked)
+        //    {
+        //        Cursor.lockState = CursorLockMode.None;
+       //         Cursor.visible = true;
+        //    }
+        //    else if (Cursor.lockState == CursorLockMode.None)
+        //    {
+        //        Cursor.lockState = CursorLockMode.Locked;
+        //        Cursor.visible = false;
+        //    }
+       // }
 
-        //TODO: Shooting implementations
-        {
-            //Code here...
-        }
     }
     
 }

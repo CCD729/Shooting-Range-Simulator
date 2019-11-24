@@ -62,11 +62,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\MenuSceneManager.cs" />
     <Compile Include="Assets\Scripts\BulletMovement.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\LevelSceneManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\ShootingScript.cs" />
-    <Compile Include="Assets\TargetBehavior.cs" />
+    <Compile Include="Assets\Scripts\TargetBehavior.cs" />
+    <None Include="Assets\Fonts\Ubantu\LICENCE.txt" />
+    <None Include="Assets\Fonts\Ubantu\FONTLOG.txt" />
+    <None Include="Assets\Fonts\Ubantu\copyright.txt" />
+    <None Include="Assets\Fonts\Ubantu\CONTRIBUTING.txt" />
+    <None Include="Assets\Fonts\Ubantu\README.txt" />
+    <None Include="Assets\Fonts\Ubantu\TRADEMARKS.txt" />
+    <None Include="Assets\Fonts\Ubantu\LICENCE-FAQ.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Cola/Desktop/College files/Fall 2019/CM121/FINAL/Shooting-Range-Simulator/Shooting Range Simulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
