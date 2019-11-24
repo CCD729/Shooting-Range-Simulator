@@ -11,6 +11,9 @@ public class BulletMovement : MonoBehaviour
     [SerializeField]
     private float speed = 80f;
 
+    public bool hit;
+    public Vector3 hitPoint;
+
     //Counter
     private float destroyTime;
 
@@ -26,18 +29,23 @@ public class BulletMovement : MonoBehaviour
             this.Destroy();
     }
     void OnCollisionEnter(Collision collision)
-    {   //Destroy the bullet on collision
+    {
+        //Destroy the bullet on collision
         if (destroySelfOnCollision)
+        {
             //TODO: Particle/SFX
             this.Destroy();
+        }
     }
 
+    /*
     void OnTriggerStay(Collider other)
     {   //Destroy the bullet on collision
         if (destroySelfOnCollision)
             //TODO: Particle/SFX
             this.Destroy();
     }
+    */
     public void Destroy()
     {
         Destroy(gameObject);
