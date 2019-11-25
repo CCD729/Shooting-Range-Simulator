@@ -19,6 +19,7 @@ public class ShootingScript : MonoBehaviour
     public GameObject bullet;
     public Transform firePoint, detectPoint;
     public Text scoreText, ammoText, timeText;
+    private GameObject character;
     private int count;
 
     [SerializeField]
@@ -59,6 +60,7 @@ public class ShootingScript : MonoBehaviour
         scoreText.text = "Score: " + count.ToString();
         timeText.text = "Time: " + timeLeft.ToString();
         Time.timeScale = 1;
+        character = this.transform.parent.gameObject;
     }
 
     void Update()
@@ -97,7 +99,7 @@ public class ShootingScript : MonoBehaviour
             ray = new Ray(this.transform.position, this.transform.forward);
             if (Input.GetMouseButton(0))
             {
-                //Do nothing if reloading (TODO: SHOW RELOAD UI)
+                //Do nothing if reloading 
                 if (!reloading)
                 {
                     //Start shooting if mag has bullets
@@ -206,6 +208,7 @@ public class ShootingScript : MonoBehaviour
                 target.GetComponent<TargetBehavior>().Hit(raycastHit.point, this.transform.forward);
             }
         }
+        this.Recoil();
     }
     public void Pause()
     {
@@ -230,5 +233,9 @@ public class ShootingScript : MonoBehaviour
         Time.timeScale = 0;
         levelEnded = true;
         sceneManmager.GetComponent<LevelSceneManager>().Perfect();
+    }
+    public void Recoil()
+    {
+        GetComponent<CameraController>().Recoil();
     }
 }

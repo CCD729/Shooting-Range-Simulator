@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public float sensitivity = 2.0f;
     private GameObject character;
     bool gamePlaying;
+    bool recoil = false;
 
     void Start()
     {
@@ -28,8 +29,17 @@ public class CameraController : MonoBehaviour
                 mouseCurrent.y = 90;
             else if (mouseCurrent.y <= -90)
                 mouseCurrent.y = -90;
+            if (recoil)
+            {
+                mouseCurrent.y += 0.5f;
+                mouseCurrent.x += Random.Range(-0.5f, 0.5f);
+            }
             transform.localRotation = Quaternion.AngleAxis(-mouseCurrent.y, Vector3.right);
             character.transform.localRotation = Quaternion.AngleAxis(mouseCurrent.x, character.transform.up);
+            if (recoil)
+            {
+                recoil = false;
+            }
         }
     }
 
@@ -40,5 +50,9 @@ public class CameraController : MonoBehaviour
     public void ResumeCam()
     {
         gamePlaying = true;
+    }
+    public void Recoil()
+    {
+        recoil = true;
     }
 }
