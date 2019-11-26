@@ -586,7 +586,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 127c38cdc671da34961372d853b3db04
+      Hash: 8e2427b97e6aa9ea23684d1a37ac4a48
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShootingScript
@@ -631,4 +631,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Level.unity
   playerPath: C:/Users/Cola/Desktop/College files/Fall 2019/CM121/FINAL/Builds/Shooting
-    Range Simulator.exe
+    Range Simulator/Shooting Range Simulator.exe

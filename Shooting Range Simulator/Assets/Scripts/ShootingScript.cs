@@ -16,11 +16,14 @@ public class ShootingScript : MonoBehaviour
     //Magazine size
     public int magSize = 30;
     //References
-    public GameObject bullet;
+    public GameObject bullet, gun;
     public Transform firePoint, detectPoint;
     public Text scoreText, ammoText, timeText;
     private GameObject character;
     private int count;
+
+    //Reload Assets
+    public Image crossHair, bulletIcon, circleProgressBar;
 
     [SerializeField]
     private float timeLimit = 30.00f;
@@ -32,7 +35,8 @@ public class ShootingScript : MonoBehaviour
     //Current bullets left in mag
     private int currentMag = 30;
     //Reload interval
-    private float reloadTime = 3f;
+    [SerializeField]
+    private float reloadTime = 1.5f;
     //Reload counter
     private float reloadingTime = 0f;
     //Reload status
@@ -61,6 +65,8 @@ public class ShootingScript : MonoBehaviour
         timeText.text = "Time: " + timeLeft.ToString();
         Time.timeScale = 1;
         character = this.transform.parent.gameObject;
+        bulletIcon.enabled = false;
+        circleProgressBar.enabled = false;
     }
 
     void Update()
@@ -87,6 +93,18 @@ public class ShootingScript : MonoBehaviour
             EscPressed = false;
             this.Resume();
         }
+        //Manual reload
+        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading)
+        {
+            reloading = true;
+            ammoText.text = "Reloading";
+            gun.GetComponent<animController>().ReloadAnimation();
+            circleProgressBar.GetComponent<ReloadRingAnim>().Play();
+            bulletIcon.enabled = true;
+            circleProgressBar.enabled = true;
+            crossHair.enabled = false;
+            Debug.Log("Reloading...");
+        }
     }
     void FixedUpdate()
     {
@@ -112,16 +130,14 @@ public class ShootingScript : MonoBehaviour
                     {
                         reloading = true;
                         ammoText.text = "Reloading";
+                        gun.GetComponent<animController>().ReloadAnimation();
+                        circleProgressBar.GetComponent<ReloadRingAnim>().Play();
+                        crossHair.enabled = false;
+                        bulletIcon.enabled = true;
+                        circleProgressBar.enabled = true;
                         Debug.Log("Reloading...");
                     }
                 }
-            }
-            //Manual reload
-            if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading)
-            {
-                reloading = true;
-                ammoText.text = "Reloading";
-                Debug.Log("Reloading...");
             }
 
             //Reload logic
@@ -137,6 +153,9 @@ public class ShootingScript : MonoBehaviour
                     currentMag = magSize;
                     reloading = false;
                     ammoText.text = currentMag.ToString() + "/30";
+                    bulletIcon.enabled = false;
+                    circleProgressBar.enabled = false;
+                    crossHair.enabled = true;
                     Debug.Log("Reloaded");
                 }
             }

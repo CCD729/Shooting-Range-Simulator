@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
         gamePlaying = true;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (gamePlaying)
         {
