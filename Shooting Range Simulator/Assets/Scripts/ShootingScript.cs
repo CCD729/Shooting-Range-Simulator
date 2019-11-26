@@ -65,8 +65,6 @@ public class ShootingScript : MonoBehaviour
         timeText.text = "Time: " + timeLeft.ToString();
         Time.timeScale = 1;
         character = this.transform.parent.gameObject;
-        bulletIcon.enabled = false;
-        circleProgressBar.enabled = false;
     }
 
     void Update()
@@ -94,7 +92,7 @@ public class ShootingScript : MonoBehaviour
             this.Resume();
         }
         //Manual reload
-        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading)
+        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading && !levelPaused)
         {
             reloading = true;
             ammoText.text = "Reloading";
@@ -232,7 +230,7 @@ public class ShootingScript : MonoBehaviour
     public void Pause()
     {
         Time.timeScale = 0;
-        sceneManmager.GetComponent<LevelSceneManager>().Pause();
+        sceneManmager.GetComponent<LevelSceneManager>().Pause(reloading);
         levelPaused = true;
     }
     public void Resume()
