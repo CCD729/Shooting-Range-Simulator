@@ -630,5 +630,5 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Level.unity
-  playerPath: C:/Users/Cola/Desktop/College files/Fall 2019/CM121/FINAL/Shooting-Range-Simulator/build/Shooting
+  playerPath: C:/Users/Brian/Shooting-Range-Simulator/Shooting Range Simulator/Shooting
     Range Simulator.exe

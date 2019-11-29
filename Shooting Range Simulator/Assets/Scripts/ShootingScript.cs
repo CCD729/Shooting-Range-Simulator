@@ -48,6 +48,9 @@ public class ShootingScript : MonoBehaviour
 
     //IMPORTANT: UPDATING PRESSINFO
     private bool EscPressed = false;
+	
+	public AudioClip shoot_sound;
+	public AudioSource pewpew;
 
 
     void Start()
@@ -59,6 +62,10 @@ public class ShootingScript : MonoBehaviour
         scoreText.text = "Score: " + count.ToString();
         timeText.text = "Time: " + timeLeft.ToString();
         Time.timeScale = 1;
+		
+		pewpew = this.GetComponent<AudioSource>();
+		pewpew.clip = shoot_sound;
+		pewpew.loop = false;
     }
 
     void Update()
@@ -168,6 +175,7 @@ public class ShootingScript : MonoBehaviour
 
     void Shoot()
     {
+		pewpew.Play();
         fRatePassed = false;
         currentMag--;
         // Check if we hit anything
