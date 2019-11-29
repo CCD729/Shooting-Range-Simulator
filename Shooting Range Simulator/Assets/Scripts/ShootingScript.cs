@@ -19,6 +19,7 @@ public class ShootingScript : MonoBehaviour
     public GameObject bullet, gun;
     public Transform firePoint, detectPoint;
     public Text scoreText, ammoText, timeText;
+    public GameObject[] BulletTextures;
     private GameObject character;
     private int count;
 
@@ -215,6 +216,11 @@ public class ShootingScript : MonoBehaviour
             clone.GetComponent<BulletMovement>().hit = true;
             clone.GetComponent<BulletMovement>().hitPoint = raycastHit.point;
 
+            //Create bullet hole
+            if (!raycastHit.collider.gameObject.CompareTag("Target") && !raycastHit.collider.gameObject.CompareTag("Weapon"))
+            {
+                StartCoroutine(CreateBulletHole(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
+            }
             //Looks like the target is hit
             var target = raycastHit.collider.gameObject;
             if (target.CompareTag("Target"))
@@ -256,5 +262,10 @@ public class ShootingScript : MonoBehaviour
     public void Recoil()
     {
         GetComponent<CameraController>().Recoil();
+    }
+    IEnumerator CreateBulletHole(float time, Vector3 location, Quaternion facingDir)
+    {
+        yield return new WaitForSeconds(time);
+        Instantiate(BulletTextures[Random.Range(0,3)], location, facingDir);
     }
 }
