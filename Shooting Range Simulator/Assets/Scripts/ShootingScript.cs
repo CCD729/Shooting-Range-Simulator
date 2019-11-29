@@ -212,6 +212,8 @@ public class ShootingScript : MonoBehaviour
             Vector3 modifiedV = preV + new Vector3(90f, 0f, 0f);
             //TODO: Recoil, HittingSound, and HittingSparkles
             var clone = Instantiate(bullet, firePoint.position, Quaternion.Euler(modifiedV));
+            clone.GetComponent<BulletMovement>().hit = true;
+            clone.GetComponent<BulletMovement>().hitPoint = raycastHit.point;
 
             //Looks like the target is hit
             var target = raycastHit.collider.gameObject;
