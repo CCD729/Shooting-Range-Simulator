@@ -1,11 +1,14 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - BHDestroyer
     - BulletMovement
     - CameraController
     - LevelSceneManager
     - MenuSceneManager
+    - MovingTargetBehavior
     - PlayerController
+    - RailTargetBehavior
     - ReloadRingAnim
     - ShootingScript
     - TargetBehavior
@@ -13,8 +16,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -87,19 +92,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10312}
     - Class: 114
-      Script: {instanceID: 10466}
+      Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 10572}
+      Script: {instanceID: 10468}
     - Class: 114
-      Script: {instanceID: 11010}
+      Script: {instanceID: 10574}
     - Class: 114
-      Script: {instanceID: 11272}
+      Script: {instanceID: 11012}
     - Class: 114
-      Script: {instanceID: 11300}
+      Script: {instanceID: 11274}
     - Class: 114
-      Script: {instanceID: 11346}
+      Script: {instanceID: 11302}
     - Class: 114
-      Script: {instanceID: 11354}
+      Script: {instanceID: 11348}
+    - Class: 114
+      Script: {instanceID: 11356}
+    - Class: 114
+      Script: {instanceID: 13370}
+    - Class: 114
+      Script: {instanceID: 42602}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -109,6 +120,10 @@ ScriptsOnlyBuild:
     - Class: 143
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -145,7 +160,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -166,11 +187,17 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10312}
     - Class: 114
-      Script: {instanceID: 10572}
+      Script: {instanceID: 10386}
     - Class: 114
-      Script: {instanceID: 11010}
+      Script: {instanceID: 10574}
     - Class: 114
-      Script: {instanceID: 11354}
+      Script: {instanceID: 11012}
+    - Class: 114
+      Script: {instanceID: 11356}
+    - Class: 114
+      Script: {instanceID: 13370}
+    - Class: 114
+      Script: {instanceID: 42602}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -178,6 +205,10 @@ ScriptsOnlyBuild:
     - Class: 136
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -418,6 +449,12 @@ ScriptsOnlyBuild:
     className: TMP_Asset
   - hash:
       serializedVersion: 2
+      Hash: bf596621617d163c2d3afe80359532e4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BHDestroyer
+  - hash:
+      serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -616,7 +653,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 1be61c0379fc0c45eaccbf45fdfb01ac
+      Hash: 92282ceed6dcd612bdcca9d0537fa6cd
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShootingScript
@@ -656,6 +693,18 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 19470174bbd303a02d1418d399a6e630
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MovingTargetBehavior
+  - hash:
+      serializedVersion: 2
+      Hash: c5614dbeee00b5c3393264e57de526bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RailTargetBehavior
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

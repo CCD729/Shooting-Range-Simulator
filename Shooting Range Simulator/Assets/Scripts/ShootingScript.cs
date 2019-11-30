@@ -28,8 +28,8 @@ public class ShootingScript : MonoBehaviour
     public Image crossHair, bulletIcon, circleProgressBar;
 
     [SerializeField]
-    private float timeLimit = 30.00f;
-    private float timeLeft = 30.00f;
+    private float timeLimit = 45.00f;
+    private float timeLeft = 45.00f;
 
     private Ray ray;
     private RaycastHit raycastHit;
@@ -72,7 +72,7 @@ public class ShootingScript : MonoBehaviour
 
     void Update()
     {
-        if(count == 32)
+        if(count == 50)
         {
             this.Perfect();
         }
@@ -219,7 +219,7 @@ public class ShootingScript : MonoBehaviour
             clone.GetComponent<BulletMovement>().hitPoint = raycastHit.point;
 
             //Create bullet hit effects
-            if (!raycastHit.collider.gameObject.CompareTag("Target"))
+            if (!raycastHit.collider.gameObject.CompareTag("Target") && !raycastHit.collider.gameObject.CompareTag("MovingTarget") && !raycastHit.collider.gameObject.CompareTag("RailTarget"))
             {
                 StartCoroutine(HitOtherBulletEffects(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
             }
@@ -237,6 +237,26 @@ public class ShootingScript : MonoBehaviour
                     scoreText.text = "Score: " + count.ToString();
                 }
                 target.GetComponent<TargetBehavior>().Hit(raycastHit.point, this.transform.forward);
+            }
+            //Moving target hit
+            if (target.CompareTag("MovingTarget"))
+            {
+                if (!target.GetComponent<MovingTargetBehavior>().hit)
+                {
+                    count += 2;
+                    scoreText.text = "Score: " + count.ToString();
+                }
+                target.GetComponent<MovingTargetBehavior>().Hit(raycastHit.point, this.transform.forward);
+            }
+            //Another version of moving target (needs optimization)
+            if (target.CompareTag("RailTarget"))
+            {
+                if (!target.GetComponent<RailTargetBehavior>().hit)
+                {
+                    count += 1;
+                    scoreText.text = "Score: " + count.ToString();
+                }
+                target.GetComponent<RailTargetBehavior>().Hit(raycastHit.point, this.transform.forward);
             }
         }
         this.Recoil();

@@ -1142,7 +1142,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Shoot as many targets as you can in 30 seconds!
+  m_Text: Shoot as many targets as you can in 45 seconds!
 --- !u!222 &1973055351
 CanvasRenderer:
   m_ObjectHideFlags: 0

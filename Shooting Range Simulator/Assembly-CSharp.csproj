@@ -68,7 +68,9 @@
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\LevelSceneManager.cs" />
     <Compile Include="Assets\Scripts\MenuSceneManager.cs" />
+    <Compile Include="Assets\Scripts\MovingTargetBehavior.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\RailTargetBehavior.cs" />
     <Compile Include="Assets\Scripts\ReloadRingAnim.cs" />
     <Compile Include="Assets\Scripts\ShootingScript.cs" />
     <Compile Include="Assets\Scripts\TargetBehavior.cs" />
