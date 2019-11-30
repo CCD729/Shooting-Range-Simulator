@@ -56,7 +56,6 @@ public class BulletMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Destroy the bullet on collision
-        Debug.Log(collision.gameObject);
         if (destroySelfOnCollision)
         {
             //TODO: Particle/SFX

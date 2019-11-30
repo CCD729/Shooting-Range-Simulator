@@ -20,6 +20,7 @@ public class ShootingScript : MonoBehaviour
     public Transform firePoint, detectPoint;
     public Text scoreText, ammoText, timeText;
     public GameObject[] BulletTextures;
+    public ParticleSystem hitTargetParticle, hitOthersParticle;
     private GameObject character;
     private int count;
 
@@ -32,6 +33,7 @@ public class ShootingScript : MonoBehaviour
 
     private Ray ray;
     private RaycastHit raycastHit;
+    public LayerMask layerMask;
 
     //Current bullets left in mag
     private int currentMag = 30;
@@ -191,7 +193,7 @@ public class ShootingScript : MonoBehaviour
         fRatePassed = false;
         currentMag--;
         // Check if we hit anything
-        bool hit = Physics.Raycast(ray, out raycastHit);
+        bool hit = Physics.Raycast(ray, out raycastHit, Mathf.Infinity, layerMask);
         // If we did...Shoot to the hitposition
         if (!hit)
         {
@@ -216,10 +218,14 @@ public class ShootingScript : MonoBehaviour
             clone.GetComponent<BulletMovement>().hit = true;
             clone.GetComponent<BulletMovement>().hitPoint = raycastHit.point;
 
-            //Create bullet hole
-            if (!raycastHit.collider.gameObject.CompareTag("Target") && !raycastHit.collider.gameObject.CompareTag("Weapon"))
+            //Create bullet hit effects
+            if (!raycastHit.collider.gameObject.CompareTag("Target"))
             {
-                StartCoroutine(CreateBulletHole(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
+                StartCoroutine(HitOtherBulletEffects(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
+            }
+            else
+            {
+                StartCoroutine(HitTargetBulletEffects(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
             }
             //Looks like the target is hit
             var target = raycastHit.collider.gameObject;
@@ -263,9 +269,15 @@ public class ShootingScript : MonoBehaviour
     {
         GetComponent<CameraController>().Recoil();
     }
-    IEnumerator CreateBulletHole(float time, Vector3 location, Quaternion facingDir)
+    IEnumerator HitOtherBulletEffects(float time, Vector3 location, Quaternion facingDir)
     {
         yield return new WaitForSeconds(time);
-        Instantiate(BulletTextures[Random.Range(0,3)], location, facingDir);
+        Instantiate(BulletTextures[Random.Range(0, 3)], location, facingDir);
+        Instantiate(hitOthersParticle, location, facingDir);
+    }
+    IEnumerator HitTargetBulletEffects(float time, Vector3 location, Quaternion facingDir)
+    {
+        yield return new WaitForSeconds(time);
+        Instantiate(hitTargetParticle, location, facingDir);
     }
 }
