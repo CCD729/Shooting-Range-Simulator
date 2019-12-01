@@ -15,6 +15,7 @@ public class RailTargetBehavior : MonoBehaviour
         yield return new WaitForSeconds(time);
         mr.material = hitMaterial;
         rb.useGravity = true;
+        rb.isKinematic = false;
     }
 
     IEnumerator PhysicsPush(float time, Vector3 hitPos, Vector3 hitDir)

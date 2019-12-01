@@ -4,6 +4,7 @@ ScriptsOnlyBuild:
     - BHDestroyer
     - BulletMovement
     - CameraController
+    - HittingAudioManager
     - LevelSceneManager
     - MenuSceneManager
     - MovingTargetBehavior
@@ -11,6 +12,7 @@ ScriptsOnlyBuild:
     - RailTargetBehavior
     - ReloadRingAnim
     - ShootingScript
+    - SoundScript
     - TargetBehavior
     - animController
     UnityEditor.Graphs.dll:
@@ -63,6 +65,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 91
@@ -74,43 +80,47 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9670}
+      Script: {instanceID: 9680}
     - Class: 114
-      Script: {instanceID: 9728}
+      Script: {instanceID: 9738}
     - Class: 114
-      Script: {instanceID: 9820}
+      Script: {instanceID: 9830}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9874}
+      Script: {instanceID: 9884}
     - Class: 114
-      Script: {instanceID: 9910}
+      Script: {instanceID: 9920}
     - Class: 114
-      Script: {instanceID: 10034}
+      Script: {instanceID: 9960}
     - Class: 114
-      Script: {instanceID: 10234}
+      Script: {instanceID: 10046}
     - Class: 114
-      Script: {instanceID: 10312}
+      Script: {instanceID: 10246}
     - Class: 114
-      Script: {instanceID: 10386}
+      Script: {instanceID: 10324}
     - Class: 114
-      Script: {instanceID: 10468}
+      Script: {instanceID: 10398}
     - Class: 114
-      Script: {instanceID: 10574}
+      Script: {instanceID: 10480}
     - Class: 114
-      Script: {instanceID: 11012}
+      Script: {instanceID: 10586}
     - Class: 114
-      Script: {instanceID: 11274}
+      Script: {instanceID: 10792}
     - Class: 114
-      Script: {instanceID: 11302}
+      Script: {instanceID: 10902}
     - Class: 114
-      Script: {instanceID: 11348}
+      Script: {instanceID: 11028}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 11120}
     - Class: 114
-      Script: {instanceID: 13370}
+      Script: {instanceID: 11292}
     - Class: 114
-      Script: {instanceID: 42602}
+      Script: {instanceID: 11320}
+    - Class: 114
+      Script: {instanceID: 11366}
+    - Class: 114
+      Script: {instanceID: 11374}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -154,6 +164,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
+    - Class: 49
+      Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
     - Class: 64
@@ -164,6 +176,12 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -173,31 +191,33 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9670}
+      Script: {instanceID: 9680}
     - Class: 114
-      Script: {instanceID: 9820}
+      Script: {instanceID: 9830}
     - Class: 114
-      Script: {instanceID: 9860}
+      Script: {instanceID: 9870}
     - Class: 114
-      Script: {instanceID: 9874}
+      Script: {instanceID: 9884}
     - Class: 114
-      Script: {instanceID: 9982}
+      Script: {instanceID: 9960}
     - Class: 114
-      Script: {instanceID: 10234}
+      Script: {instanceID: 9994}
     - Class: 114
-      Script: {instanceID: 10312}
+      Script: {instanceID: 10246}
     - Class: 114
-      Script: {instanceID: 10386}
+      Script: {instanceID: 10324}
     - Class: 114
-      Script: {instanceID: 10574}
+      Script: {instanceID: 10398}
     - Class: 114
-      Script: {instanceID: 11012}
+      Script: {instanceID: 10586}
     - Class: 114
-      Script: {instanceID: 11356}
+      Script: {instanceID: 10792}
     - Class: 114
-      Script: {instanceID: 13370}
+      Script: {instanceID: 10902}
     - Class: 114
-      Script: {instanceID: 42602}
+      Script: {instanceID: 11028}
+    - Class: 114
+      Script: {instanceID: 11374}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -327,6 +347,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: GridLayoutGroup
+  - hash:
+      serializedVersion: 2
+      Hash: c5614dbeee00b5c3393264e57de526bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RailTargetBehavior
   - hash:
       serializedVersion: 2
       Hash: 8aa3d6ccbcb54ee8db6c1229854adaaa
@@ -527,6 +553,12 @@ ScriptsOnlyBuild:
     className: HorizontalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 19470174bbd303a02d1418d399a6e630
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MovingTargetBehavior
+  - hash:
+      serializedVersion: 2
       Hash: 35a9693c388776aaf487636491a20f11
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -557,6 +589,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: cfda17d14d6c57b05de6481bab08554b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: HittingAudioManager
+  - hash:
+      serializedVersion: 2
       Hash: 3b760e6526e13f7504f59e210145899a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -579,6 +617,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: b555b6a95065b19d2841d39555917c27
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundScript
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -605,7 +649,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 302328ba38ea9fdfcfc6cb615d4fbe09
+      Hash: 6cb11179564348a3ecc2e5c98fc11674
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSceneManager
@@ -653,7 +697,7 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
-      Hash: 92282ceed6dcd612bdcca9d0537fa6cd
+      Hash: 5e4c95518c8f5766b3351a5fbcee7fe7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShootingScript
@@ -693,18 +737,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
-  - hash:
-      serializedVersion: 2
-      Hash: 19470174bbd303a02d1418d399a6e630
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MovingTargetBehavior
-  - hash:
-      serializedVersion: 2
-      Hash: c5614dbeee00b5c3393264e57de526bc
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RailTargetBehavior
   platform: 19
   scenePathNames:
   - Assets/Scenes/MainMenu.unity

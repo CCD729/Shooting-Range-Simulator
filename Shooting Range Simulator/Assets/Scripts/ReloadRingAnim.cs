@@ -35,6 +35,7 @@ public class ReloadRingAnim : MonoBehaviour
     public void Play()
     {
         t = 0f;
+        Ring.fillAmount = 0;
         play = true;
     }
     public void Pause()
@@ -44,5 +45,9 @@ public class ReloadRingAnim : MonoBehaviour
     public void Resume()
     {
         gamePlaying = true;
+    }
+    public void Complete()
+    {
+        Ring.fillAmount = 0;
     }
 }

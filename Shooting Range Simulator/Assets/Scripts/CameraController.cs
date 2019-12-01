@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     private Vector2 mouseCurrent;
-    public float sensitivity = 2.0f;
+    public float sensitivity = 1.6f;
     private GameObject character;
     bool gamePlaying;
     bool recoil = false;

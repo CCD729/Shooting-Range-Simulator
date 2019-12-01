@@ -35,6 +35,9 @@ public class ShootingScript : MonoBehaviour
     private RaycastHit raycastHit;
     public LayerMask layerMask;
 
+    //Hitting Sound
+    public GameObject HittingAudioObject;
+
     //Current bullets left in mag
     private int currentMag = 30;
     //Reload interval
@@ -95,7 +98,7 @@ public class ShootingScript : MonoBehaviour
             this.Resume();
         }
         //Manual reload
-        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading && !levelPaused)
+        if (Input.GetKeyDown(KeyCode.R) && currentMag < magSize && !reloading && !levelPaused && !levelEnded)
         {
             reloading = true;
             ammoText.text = "Reloading";
@@ -159,6 +162,7 @@ public class ShootingScript : MonoBehaviour
                     bulletIcon.enabled = false;
                     circleProgressBar.enabled = false;
                     crossHair.enabled = true;
+                    circleProgressBar.GetComponent<ReloadRingAnim>().Complete();
                     Debug.Log("Reloaded");
                 }
             }
@@ -224,10 +228,14 @@ public class ShootingScript : MonoBehaviour
             if (!raycastHit.collider.gameObject.CompareTag("Target") && !raycastHit.collider.gameObject.CompareTag("MovingTarget") && !raycastHit.collider.gameObject.CompareTag("RailTarget"))
             {
                 StartCoroutine(HitOtherBulletEffects(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
+                var cloneAu = Instantiate(HittingAudioObject, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal));
+                cloneAu.GetComponent<HittingAudioManager>().Play(false);
             }
             else
             {
                 StartCoroutine(HitTargetBulletEffects(0.1f, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal)));
+                var cloneAu = Instantiate(HittingAudioObject, raycastHit.point, Quaternion.FromToRotation(Vector3.up, raycastHit.normal));
+                cloneAu.GetComponent<HittingAudioManager>().Play(true);
             }
             //Looks like the target is hit
             var target = raycastHit.collider.gameObject;

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelSceneManager : MonoBehaviour
 {
     public Text scoreText, ammoText, timeText, EndScoreText;
-    public GameObject ContinueButton, RestartButton, EndButton;
+    public GameObject ContinueButton, RestartButton, EndButton, gun;
     public Image crossHair, Ammo, Ring;
     public Camera cam;
     List<string> endList;
@@ -29,6 +29,8 @@ public class LevelSceneManager : MonoBehaviour
 
     public void Pause(bool reloadingStatus)
     {
+        if (reloadingStatus)
+            gun.GetComponent<SoundScript>().reloadSound.Pause();
         reloading = reloadingStatus;
         scoreText.enabled = false;
         ammoText.enabled = false;
@@ -57,6 +59,7 @@ public class LevelSceneManager : MonoBehaviour
             Ammo.enabled = true;
             Ring.enabled = true;
             reloading = true;
+            gun.GetComponent<SoundScript>().reloadSound.UnPause();
         }
         else
         {
@@ -69,6 +72,8 @@ public class LevelSceneManager : MonoBehaviour
     }
     public void End(float score)
     {
+        if (gun.GetComponent<SoundScript>().reloadSound.isPlaying)
+            gun.GetComponent<SoundScript>().reloadSound.Pause();
         scoreText.enabled = false;
         ammoText.enabled = false;
         timeText.enabled = false;
@@ -87,6 +92,8 @@ public class LevelSceneManager : MonoBehaviour
     }
     public void Perfect()
     {
+        if (gun.GetComponent<SoundScript>().reloadSound.isPlaying)
+            gun.GetComponent<SoundScript>().reloadSound.Pause();
         scoreText.enabled = false;
         ammoText.enabled = false;
         timeText.enabled = false;

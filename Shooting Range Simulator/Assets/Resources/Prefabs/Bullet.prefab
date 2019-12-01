@@ -110,7 +110,7 @@ MonoBehaviour:
   timeoutLifetime: 2
   destroySelfAfterTimeout: 1
   destroySelfOnCollision: 1
-  speed: 80
+  speed: 200
   hit: 0
   hitPoint: {x: 0, y: 0, z: 0}
 --- !u!54 &2738563975476570023

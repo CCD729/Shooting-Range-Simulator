@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\BHDestroyer.cs" />
     <Compile Include="Assets\Scripts\BulletMovement.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\HittingAudioManager.cs" />
     <Compile Include="Assets\Scripts\LevelSceneManager.cs" />
     <Compile Include="Assets\Scripts\MenuSceneManager.cs" />
     <Compile Include="Assets\Scripts\MovingTargetBehavior.cs" />
@@ -73,8 +74,8 @@
     <Compile Include="Assets\Scripts\RailTargetBehavior.cs" />
     <Compile Include="Assets\Scripts\ReloadRingAnim.cs" />
     <Compile Include="Assets\Scripts\ShootingScript.cs" />
+    <Compile Include="Assets\Scripts\SoundScript.cs" />
     <Compile Include="Assets\Scripts\TargetBehavior.cs" />
-    <Compile Include="Assets\SoundScript.cs" />
     <None Include="Assets\Fonts\Ubantu\LICENCE.txt" />
     <None Include="Assets\Fonts\Ubantu\FONTLOG.txt" />
     <None Include="Assets\Fonts\Ubantu\copyright.txt" />
@@ -82,6 +83,7 @@
     <None Include="Assets\Fonts\Ubantu\README.txt" />
     <None Include="Assets\Fonts\Ubantu\TRADEMARKS.txt" />
     <None Include="Assets\Fonts\Ubantu\LICENCE-FAQ.txt" />
+    <None Include="Assets\Resources\Wispy Sky\ReadMe.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Cola/Desktop/College files/Fall 2019/CM121/FINAL/Projects/Shooting-Range-Simulator/Shooting Range Simulator/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

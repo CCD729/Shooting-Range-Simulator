@@ -14,7 +14,6 @@ public class BulletMovement : MonoBehaviour
     public bool hit = false;
     public Vector3 hitPoint;
 
-
     //Counter
     private Vector3 startPoint;
     private float destroyTime;
