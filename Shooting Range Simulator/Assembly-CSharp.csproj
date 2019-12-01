@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\ReloadRingAnim.cs" />
     <Compile Include="Assets\Scripts\ShootingScript.cs" />
     <Compile Include="Assets\Scripts\TargetBehavior.cs" />
+    <Compile Include="Assets\SoundScript.cs" />
     <None Include="Assets\Fonts\Ubantu\LICENCE.txt" />
     <None Include="Assets\Fonts\Ubantu\FONTLOG.txt" />
     <None Include="Assets\Fonts\Ubantu\copyright.txt" />

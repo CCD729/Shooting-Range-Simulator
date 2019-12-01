@@ -104,6 +104,7 @@ public class ShootingScript : MonoBehaviour
             bulletIcon.enabled = true;
             circleProgressBar.enabled = true;
             crossHair.enabled = false;
+            this.ReloadSound();
             Debug.Log("Reloading...");
         }
     }
@@ -136,6 +137,7 @@ public class ShootingScript : MonoBehaviour
                         crossHair.enabled = false;
                         bulletIcon.enabled = true;
                         circleProgressBar.enabled = true;
+                        this.ReloadSound();
                         Debug.Log("Reloading...");
                     }
                 }
@@ -260,6 +262,7 @@ public class ShootingScript : MonoBehaviour
             }
         }
         this.Recoil();
+        this.ShootingSound();
     }
     public void Pause()
     {
@@ -288,6 +291,14 @@ public class ShootingScript : MonoBehaviour
     public void Recoil()
     {
         GetComponent<CameraController>().Recoil();
+    }
+    public void ShootingSound()
+    {
+        gun.GetComponent<SoundScript>().ShootSound();
+    }
+    public void ReloadSound()
+    {
+        gun.GetComponent<SoundScript>().ReloadSound();
     }
     IEnumerator HitOtherBulletEffects(float time, Vector3 location, Quaternion facingDir)
     {
