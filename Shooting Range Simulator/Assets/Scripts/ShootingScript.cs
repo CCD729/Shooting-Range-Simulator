@@ -87,12 +87,12 @@ public class ShootingScript : MonoBehaviour
         {
             EscPressed = false;
         }
-        if (EscPressed && levelPaused == false)
+        if (EscPressed && levelPaused == false && !levelEnded)
         {
             EscPressed = false;
             this.Pause();
         }
-        else if (EscPressed && levelPaused == true)
+        else if (EscPressed && levelPaused == true && !levelEnded)
         {
             EscPressed = false;
             this.Resume();
