@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+	public Slider slider;
     private Vector2 mouseCurrent;
     public float sensitivity = 1.6f;
     private GameObject character;
@@ -21,6 +23,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+		Debug.Log(sensitivity);
         if (gamePlaying)
         {
             var mouseGet = new Vector2(Input.GetAxis("Mouse X") * sensitivity, Input.GetAxis("Mouse Y") * sensitivity);
@@ -41,7 +44,12 @@ public class CameraController : MonoBehaviour
                 recoil = false;
             }
         }
+		
     }
+
+	public void Sensitivity(float sens) {
+		sensitivity = slider.value;
+	}
 
     public void StopCam()
     {
