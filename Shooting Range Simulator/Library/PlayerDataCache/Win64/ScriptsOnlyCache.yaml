@@ -18,10 +18,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -34,6 +32,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
     - UnityEngine.UI.Outline
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/Level.unity:
@@ -121,6 +120,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 11366}
     - Class: 114
       Script: {instanceID: 11374}
+    - Class: 114
+      Script: {instanceID: 11406}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -179,8 +180,6 @@ ScriptsOnlyBuild:
     - Class: 82
       Script: {instanceID: 0}
     - Class: 83
-      Script: {instanceID: 0}
-    - Class: 89
       Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
@@ -265,7 +264,7 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
-      Hash: dc38c27f90ed9f5c03f2d6338eb092f5
+      Hash: 080fe837641fe0b73c264e4146d2d29d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraController
@@ -649,7 +648,7 @@ ScriptsOnlyBuild:
     className: TMP_ColorGradient
   - hash:
       serializedVersion: 2
-      Hash: 6cb11179564348a3ecc2e5c98fc11674
+      Hash: 3da982f75cef23caa81dd058209829c0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSceneManager

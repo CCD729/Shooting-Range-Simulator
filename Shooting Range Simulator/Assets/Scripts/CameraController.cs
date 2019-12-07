@@ -7,13 +7,15 @@ public class CameraController : MonoBehaviour
 {
 	public Slider slider;
     private Vector2 mouseCurrent;
-    public float sensitivity = 1.6f;
+    public float sensitivity = 2f;
     private GameObject character;
     bool gamePlaying;
     bool recoil = false;
 
     void Start()
     {
+        sensitivity = PlayerPrefs.GetFloat("Sensitivity", 2f);
+        slider.value = sensitivity;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         mouseCurrent.x = 0;
@@ -23,7 +25,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-		Debug.Log(sensitivity);
         if (gamePlaying)
         {
             var mouseGet = new Vector2(Input.GetAxis("Mouse X") * sensitivity, Input.GetAxis("Mouse Y") * sensitivity);
@@ -49,7 +50,8 @@ public class CameraController : MonoBehaviour
 
 	public void Sensitivity(float sens) {
 		sensitivity = slider.value;
-	}
+        PlayerPrefs.SetFloat("Sensitivity", slider.value);
+    }
 
     public void StopCam()
     {
